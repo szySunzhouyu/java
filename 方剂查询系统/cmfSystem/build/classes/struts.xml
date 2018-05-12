@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Struts2配置文件的DTD信息 -->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- Struts2配置文件的根元素 -->
+<struts>
+	<!-- 配置了系列常量 -->
+	<constant name="struts.custom.i18n.resources" value="resource"/>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.devMode" value="true"/>
+	<package name="default" extends="json-default">
+		
+
+<!--============================下面是员工角色的Action========================-->
+		<!-- 定义处理登出请求的Action -->
+		<action name="loginAction" 
+			class="cn.edu.hbtcm.pre.action.LoginAction">
+			<result name="ad" type="redirect">/main/index.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<!-- 查找方剂的Action -->
+		<action name="viewPreAction" 
+			class="cn.edu.hbtcm.pre.action.ViewPreAction">
+			<result name="success" type="json"/>
+		</action>
+		<!-- 查看关系的Action -->
+		<action name="matrixRelationAction" 
+			class="cn.edu.hbtcm.pre.action.MatrixRelationAction">
+			<result name="success" type="json"/>
+		</action>
+		<!-- 显示关系图的Action -->
+		<action name="showRelationAction" 
+			class="cn.edu.hbtcm.pre.action.ShowRelationAction">
+			<result name="success" type="json"/>
+		</action>
+		
+		<action name="*">
+			<result>/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
